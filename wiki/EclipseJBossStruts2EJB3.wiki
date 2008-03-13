@@ -71,7 +71,7 @@ Dentro do Eclipse, começamos assim:
       </filter>
       <filter-mapping>
               <filter-name>struts2</filter-name>
-              <url-pattern>/*</url-pattern>
+              <url-pattern>/ * </url-pattern>
       </filter-mapping>
 
    9. Dentro da pasta src, criar o arquivo struts.xml:
