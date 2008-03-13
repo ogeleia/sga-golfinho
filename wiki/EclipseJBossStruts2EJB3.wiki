@@ -1,0 +1,132 @@
+#labels Eclipse,JBOSS,Struts
+#Eclipse, JBoss, Struts2, EJB3.0 na mesma máquina.
+
+= Introduction =
+
+Eclipse, JBoss, Struts2, EJB3.0 na mesma máquina: começar assim!
+
+Publicado há 71 dias atrás
+
+Faz pouco tempo quis começar um projeto que utilizasse o application server e o web server ou web container na mesma máquina, no mesmo domínio. Não passou muito tempo ate descobrir que não ia dar certo do jeito que eu estava fazendo.
+
+O que eu tinha feito foi criar uma Dynamic Web Application no Eclipse e seguidamente organizar meus pacotes. O problema era que no processo de deploy da minha aplicação, ela era compactada como um arquivo .war e por tal motivo JBoss não fazia o deploy dos meus EJB?s, esperando que eles estejam num arquivo .jar . Tentei então exportar minhas classes na mão para um arquivo .jar e ver que dava. Efetivamente o JBoss fez o deploy de meus EJB?s, mas aconteceu um problema: as classes ficaram repetidas no classpath, pelo que começaram a aparecer erros de CastException.
+
+Comecei a pesquisar e pesquisar e terminei descobrindo que a solução era muito simples (e eu achando que ia ser complicado). A solução a meu problema consistia em criar dois projetos: um projeto EJB e um segundo projeto Dynamic Web Application, incluindo o primeiro no Class Path.
+
+A continuação segue um possível caminho a seguir para começar a desenvolver uma aplicação com Eclipse, Struts2 e EJB utilizando JBoss desde o zero. No caso que alguma pessoa se encontre perdida num problema similar a o que eu teve, esta guia vai poder ajudar. Qualquer duvida por favor perguntar nos comentários. Estarei utilizando Eclipse Europa, JBoss v4.2, Struts2 e EJB3.0.
+
+= Details =
+
+
+Dentro do Eclipse, começamos assim:
+
+   1. File > New > Other.. . Dentro da pasta Web escolher Dynamic Web Project e fazer click em Next.
+   2. Escolher o nome do nosso projeto web server, o Target Runtime (JBoss v4.2 no meu caso) e fazer click em Finish. No caso de não tiver nenhum runtime configurado, passar para o ponto 2.1. Caso contrario, ir para o ponto 3.
+
+         1. Para configurar o runtime fazer click em New e dentro da pasta JBoss escolher JBoss v4.2. Seguidamente, fazer click em Next.
+
+
+         2. Escolher o JRE a utilizar e o diretório onde foi instalado o servidor. Terminar o processo de configuração do runtime fazendo click em Finish.
+
+   3. File > New > Other.. . Dentro da pasta EJB escolher EJB Project e fazer click em Next. Escolher o nome do nosso projeto application server, o Target Runtime (o mesmo que no ponto 2) e fazer click em Finish.
+
+    4. Dentro do projeto do application server, click direito na pasta ejbModule > New > Interface . Escolher como nome do pacote com.mouseoverstudio.com.ejb e como nome da interface Teste. Fazer click em Finish. Nossa interface ficara da seguinte maneira:
+
+      package com.mouseoverstudio.com.ejb;
+
+      import javax.ejb.Local;
+
+      @Local
+      public interface Teste {
+
+          public String getMensagem();
+
+      }
+
+   5. Click direito na pasta ejbModule > New > Class. Escolher novamente como package com.mouseoverstudio.com.ejb e TesteBean como nome da classe. Fazer click em Add e escolher a interface Teste, dentro do pacote atual. Seguidamente fazer click em Ok e logo em Finish. Nossa classe TesteBean ficara assim:
+
+      package com.mouseoverstudio.com.ejb;
+
+      import javax.ejb.Stateless;
+
+      @Stateless
+      public class TesteBean implements Teste {
+
+          public String getMensagem() {
+      	return ?EJB3.0@MouseOver Studio?;
+          }
+
+      }
+
+   6. Copiar os arquivos .jar localizados na pasta lib dentro do diretório do Struts e colocar eles dentro da pasta /mos-web-server/WebContent/WEB-INF/lib
+   7. No projeto web server, click direito na pasta principal > Build Path > Configure Build Path? . Escolher a aba Projects seguidamente de Add? , escolher o projeto application server, fazer click em Next e terminar o processo de importação fazendo click em Next novamente.
+   8. Abrir para edição o arquivo WebContent/WEB-INF/web.xml dentro do projeto web server e adicionar o seguinte código dentro do nodo web-app. Seguidamente salvar.
+
+
+      <filter>
+              <filter-name>struts2</filter-name>
+              <filter-class>
+                  org.apache.struts2.dispatcher.FilterDispatcher
+              </filter-class>
+      </filter>
+      <filter-mapping>
+              <filter-name>struts2</filter-name>
+              <url-pattern>/*</url-pattern>
+      </filter-mapping>
+
+   9. Dentro da pasta src, criar o arquivo struts.xml:
+
+      <?xml version="1.0" encoding="UTF-8"?>
+      <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+      <struts>
+      <package name="main" namespace="/" extends="struts-default">
+      <action name="teste" class="com.mouseoverstudio.action.TesteAction">
+      <result name="input">/main.jsp</result>
+      </action>
+      </package>
+      </struts>
+  10. Click direito na pasta src > New > Other? . Dentro da pasta Java escolher Class e fazer click em Next. O nome do package sera com.mouseoverstudio.action e o nome da classe TesteAction. Seguidamente fazer click em Finish. Segue o código da nova classe:
+
+      package com.mouseoverstudio.action;
+
+      import javax.naming.InitialContext;
+      import javax.naming.NamingException;
+
+      import com.mouseoverstudio.com.ejb.Teste;
+      import com.opensymphony.xwork2.ActionSupport;
+
+      public class TesteAction extends ActionSupport {
+
+              private String mensagem;
+
+              public String execute() throws NamingException {
+                      System.out.println("Executando TesteAction.execute");
+                      InitialContext ctx = new InitialContext();
+                      Teste t = (Teste) ctx.lookup("TesteBean/local");
+                      mensagem = t.getMensagem();
+                      return INPUT;
+              }
+
+              public String getMensagem() {
+                      return mensagem;
+              }
+
+      }
+
+  11. Dentro da pasta WebContent, criar o arquivo main.jsp com o seguinte modelo:
+
+      <%@ taglib prefix="s" uri="/struts-tags" %>
+      <html>
+      <head>MouseOver Studio</head>
+      <body>
+      <s:property value="mensagem"/>
+      </body>
+      </html>
+  12. Acessar File > New > Other? . Dentro da pasta Server escolher Server e fazer click em Next. Dentro da pasta JBoss escolher Boss v4.2 e fazer click em Next duas vezes. Selecionar os projetos criados e fazer click em Add. Terminar o processo fazendo click em Finish.
+  13. Acessar Window > Show View > Other? . Dentro da pasta Server escolher Servers e fazer click em Ok.
+  14. Na aba Servers, fazer click direito no servidor JBoss e despois na opção start.
+  15. Quando o server terminar de iniciar, acessar http://localhost:8080/mos-web-server/teste.action
+
+Isso foi tudo, não esqueçam de perguntar sobre qualquer dúvida. Ate mais.
+ 
+http://www.infoblogs.com.br/view.action?contentId=27898
