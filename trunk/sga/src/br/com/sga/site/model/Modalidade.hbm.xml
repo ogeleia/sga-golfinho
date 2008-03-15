@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Modalidade.hbm.xml
+    Created on : 9 de Dezembro de 2007, 17:19
+    Author     : Hwoarang
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+  <class            name="br.com.sga.site.bean.Modalidade"
+                   table="Modalidade">
+
+    <!-- Primary Key -->
+    <id             name="codigo" column="codigo">
+      <generator   class="increment"/>
+    </id>
+
+    <!-- Direct Data Properties -->
+    <property  name="descricao"       column="descricao"/>
+  </class>
+
+</hibernate-mapping>

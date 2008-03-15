@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : UsuarioGrupo.xml
+    Created on : 25 de Novembro de 2007, 17:27
+    Author     : Hwoarang
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+  <class            name="br.com.sga.site.bean.UsuarioGrupo"
+                   table="usuariogrupo">
+
+    <!-- Primary Key -->
+    <id             name="codigousuario"  column="codigousuario">
+      <generator   class="increment"/>
+    </id>
+
+    <!-- Direct Data Properties -->
+    <property  name="codigogrupo"     column="codigogrupo"/>
+  </class>
+
+</hibernate-mapping>

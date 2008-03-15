@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Turma.hbm.xml
+    Created on : 25 de Novembro de 2007, 17:18
+    Author     : Hwoarang
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+  <class            name="br.com.sga.site.bean.Turma"
+                   table="Turma">
+
+    <!-- Primary Key -->
+    <id             name="codigo"  column="codigo">
+      <generator   class="increment"/>
+    </id>
+
+    <!-- Direct Data Properties -->
+    <property  name="descricao"       column="descricao"/>
+    <property  name="modalidade"      column="modalidade"/>
+    <property  name="classe"          column="classe"/>
+    <property  name="horario"         column="horario"/>
+    <property  name="status"          column="status"/>
+    <property  name="codigoprofessor" column="codigoprofessor"/>
+    
+  </class>
+
+</hibernate-mapping>

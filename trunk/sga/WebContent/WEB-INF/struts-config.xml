@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+
+<struts-config>
+     <form-beans>
+          <!--<form-bean name="AlunoForm" type="br.com.sga.site.bean.AlunoForm"/>-->
+          <form-bean name="Aluno" type="br.com.sga.site.bean.Aluno"/>
+         <form-bean name="Classe" type="br.com.sga.site.bean.Classe"/>   
+          <form-bean name="Fornecedor" type="br.com.sga.site.bean.Fornecedor"/>   
+          <form-bean name="Grupo" type="br.com.sga.site.bean.Grupo"/>   
+          <form-bean name="GrupoModulo" type="br.com.sga.site.bean.GrupoModulo"/>   
+          <form-bean name="Historico" type="br.com.sga.site.bean.Historico"/>   
+          <form-bean name="Matricula" type="br.com.sga.site.bean.Matricula"/>   
+          <form-bean name="Modalidade" type="br.com.sga.site.bean.Modalidade"/>   
+          <form-bean name="Modulo" type="br.com.sga.site.bean.Modulo"/>   
+          <form-bean name="Plano" type="br.com.sga.site.bean.Plano"/>   
+          <form-bean name="Professor" type="br.com.sga.site.bean.Professor"/>   
+          <form-bean name="Turma" type="br.com.sga.site.bean.Turma"/>   
+          <form-bean name="Usuario" type="br.com.sga.site.bean.Usuario"/>   
+          <form-bean name="UsuarioGrupo" type="br.com.sga.site.bean.UsuarioGrupo"/>  
+    </form-beans>
+    
+    <global-exceptions>
+    
+    </global-exceptions>
+
+    <global-forwards>
+        <forward name="welcome"  path="/Welcome.do"/>
+    </global-forwards>
+
+     <action-mappings>
+         
+         <!-- Aluno -->
+        <action  input="/sgaAluno.jsp" name="Aluno" path="/aluno" type="br.com.sga.site.action.AlunoAction">
+            <forward name="success" path="/sgaAlunos.jsp" />
+        </action> 
+        <action  path="/editaaluno" type="br.com.sga.site.action.EditaAlunoAction">
+            <forward name="success" path="/sgaEditaCadastroAluno.jsp" />
+        </action>
+        <action  input="/sgaEditaCadastroAluno.jsp" name="Aluno" path="/editaraluno" type="br.com.sga.site.action.EditarAlunoAction">
+            <forward name="success" path="/aluno.do" />
+        </action>
+        <action input="/sgaCadastroAluno.jsp" name="Aluno" path="/cadastraraluno" type="br.com.sga.site.action.CadastrarAlunoAction">
+           <forward name="success" path="/aluno.do" />
+        </action>
+        
+        <action input="/sgaEditaCadastroAluno.jsp" name="Aluno" path="/editamodalidadealuno" type="br.com.sga.site.action.EditaModalidadeAlunoAction">
+           <forward name="success" path="/sgaEditaModalidadesAluno.jsp" />
+        </action>
+        
+        <action input="/sgaEditaCadastroAluno.jsp" name="Aluno" path="/editahistoricoaluno" type="br.com.sga.site.action.EditaHistoricoAlunoAction">
+           <forward name="success" path="/sgaEditaHistoricoAluno.jsp" />
+        </action>
+        
+        
+      
+       <!-- Classe --> 
+        <action  input="/sgaClasses.jsp" name="Classe" path="/classe" type="br.com.sga.site.action.ClasseAction">
+            <forward name="success" path="/sgaClasses.jsp" />
+        </action> 
+        <action  path="/editaclasse" type="br.com.sga.site.action.EditaClasseAction">
+            <forward name="success" path="/sgaEditaCadastroClasse.jsp" />
+        </action>
+        <action  input="/sgaEditaCadastroClasse.jsp" name="Classe" path="/editarclasse" type="br.com.sga.site.action.EditarClasseAction">
+            <forward name="success" path="/classe.do" />
+        </action>
+        <action input="/sgaCadastroClasse.jsp" name="Classe" path="/cadastrarclasse" type="br.com.sga.site.action.CadastrarClasseAction">
+           <forward name="success" path="/classe.do" />
+        </action>
+        
+        <!-- Fornecedor --> 
+        <action  input="/sgaFornecedor.jsp" name="Fornecedor" path="/fornecedor" type="br.com.sga.site.action.FornecedorAction">
+            <forward name="success" path="/sgaFornecedor.jsp" />
+        </action> 
+        <action  path="/editafornecedor" type="br.com.sga.site.action.EditaFornecedorAction">
+            <forward name="success" path="/sgaEditaCadastroFornecedor.jsp" />
+        </action>
+        <action  input="/sgaEditaCadastroFornecedor.jsp" name="Fornecedor" path="/editarfornecedor" type="br.com.sga.site.action.EditarFornecedorAction">
+            <forward name="success" path="/fornecedor.do" />
+        </action>
+        <action input="/sgaCadastroFornecedor.jsp" name="Fornecedor" path="/cadastrarfornecedor" type="br.com.sga.site.action.CadastrarFornecedorAction">
+           <forward name="success" path="/fornecedor.do" />
+        </action>
+
+        <!-- Grupo --> 
+        <action  input="/sgaGrupos.jsp" name="Grupo" path="/grupo" type="br.com.sga.site.action.GrupoAction">
+            <forward name="success" path="/sgaGrupos.jsp" />
+        </action> 
+        <action  path="/editagrupo" type="br.com.sga.site.action.EditaGrupoAction">
+            <forward name="success" path="/sgaEditaCadastroGrupo.jsp" />
+        </action>
+        <action  input="/sgaEditaCadastroGrupo.jsp" name="Grupo" path="/editargrupo" type="br.com.sga.site.action.EditarGrupoAction">
+            <forward name="success" path="/grupo.do" />
+        </action>
+        <action input="/sgaCadastroGrupo.jsp" name="Grupo" path="/cadastrargrupo" type="br.com.sga.site.action.CadastrarGrupoAction">
+           <forward name="success" path="/grupo.do" />
+        </action>
+        
+        <!-- Historico --> 
+        <action  input="/sgaHistoricos.jsp" name="Historico" path="/historico" type="br.com.sga.site.action.HistoricoAction">
+            <forward name="success" path="/sgaHistoricos.jsp" />
+        </action> 
+        <action  path="/editahistorico" type="br.com.sga.site.action.EditaHistoricoAction">
+            <forward name="success" path="/sgaEditaCadastroHistorico.jsp" />
+        </action>
+        <action  input="/sgaEditaCadastroHistorico.jsp" name="Historico" path="/editarhistorico" type="br.com.sga.site.action.EditarHistoricoAction">
+            <forward name="success" path="/historico.do" />
+        </action>
+        <action input="/sgaCadastroHistorico.jsp" name="Historico" path="/cadastrarhistorico" type="br.com.sga.site.action.CadastrarHistoricoAction">
+           <forward name="success" path="/historico.do" />
+        </action>
+
+        <!-- Matricula --> 
+        <action  input="/sgaMatriculas.jsp" name="Matricula" path="/matricula" type="br.com.sga.site.action.MatriculaAction">
+            <forward name="success" path="/sgaMatriculas.jsp" />
+        </action> 
+        <action  path="/editamatricula" type="br.com.sga.site.action.EditaMatriculaAction">
+            <forward name="success" path="/sgaEditaCadastroMatricula.jsp" />
+        </action>
+        <action  input="/sgaEditaCadastroMatricula.jsp" name="Matricula" path="/editarmatricula" type="br.com.sga.site.action.EditarMatriculaAction">
+            <forward name="success" path="/matricula.do" />
+        </action>
+        <action input="/sgaCadastroMatricula.jsp" name="Matricula" path="/cadastrarmatricula" type="br.com.sga.site.action.CadastrarMatriculaAction">
+           <forward name="success" path="/matricula.do" />
+        </action>
+        
+        <!-- Modalidade --> 
+        <action name="Modalidade" path="/modalidade" type="br.com.sga.site.action.ModalidadeAction">
+            <forward name="success" path="/sgaModalidades.jsp" />
+        </action> 
+        <action name="Modalidade" path="/editamodalidade" type="br.com.sga.site.action.EditaModalidadeAction">
+            <forward name="success" path="/sgaEditaCadastroModalidade.jsp" />
+        </action>
+        <action name="Modalidade"  input="/sgaEditaCadastroModalidade.jsp" path="/editarmodalidade" type="br.com.sga.site.action.EditarModalidadeAction">
+            <forward name="success" path="/modalidade.do" />
+        </action>
+        <action  name="Modalidade" input="/sgaCadastroModalidade.jsp" path="/cadastrarmodalidade" type="br.com.sga.site.action.CadastrarModalidadeAction">
+           <forward name="success" path="/modalidade.do" />
+        </action>
+        
+        <!-- Modulo --> 
+        <action  input="/sgaModulos.jsp" name="Modulo" path="/modulo" type="br.com.sga.site.action.ModuloAction">
+            <forward name="success" path="/sgaModulos.jsp" />
+        </action> 
+        <action  path="/editamodulo" type="br.com.sga.site.action.EditaModuloAction">
+            <forward name="success" path="/sgaEditaCadastroModulo.jsp" />
+        </action>
+        <action  input="/sgaEditaCadastroModulo.jsp" name="Modulo" path="/editarmodulo" type="br.com.sga.site.action.EditarModuloAction">
+            <forward name="success" path="/modulo.do" />
+        </action>
+        <action input="/sgaCadastroModulo.jsp" name="Modulo" path="/cadastrarmodulo" type="br.com.sga.site.action.CadastrarModuloAction">
+           <forward name="success" path="/modulo.do" />
+        </action>
+
+        <!-- Plano --> 
+        <action  input="/sgaPlanos.jsp" name="Plano" path="/plano" type="br.com.sga.site.action.PlanoAction">
+            <forward name="success" path="/sgaPlanos.jsp" />
+        </action> 
+        <action  path="/editaplano" type="br.com.sga.site.action.EditaPlanoAction">
+            <forward name="success" path="/sgaEditaCadastroPlano.jsp" />
+        </action>
+        <action  input="/sgaEditaCadastroPlano.jsp" name="Plano" path="/editarplano" type="br.com.sga.site.action.EditarPlanoAction">
+            <forward name="success" path="/plano.do" />
+        </action>
+        <action input="/sgaCadastroPlano.jsp" name="Plano" path="/cadastrarplano" type="br.com.sga.site.action.CadastrarPlanoAction">
+           <forward name="success" path="/plano.do" />
+        </action>
+
+        <!-- Professor --> 
+        <action  input="/sgaProfessor.jsp" name="Professor" path="/professor" type="br.com.sga.site.action.ProfessorAction1">
+            <forward name="success" path="/sgaProfessor.jsp" />
+        </action> 
+        <action  path="/editaprofessor" type="br.com.sga.site.action.EditaProfessorAction">
+            <forward name="success" path="/sgaEditaCadastroProfessor.jsp" />
+        </action>
+        <action  input="/sgaEditaCadastroProfessor.jsp" name="Professor" path="/editarprofessor" type="br.com.sga.site.action.EditarProfessorAction">
+            <forward name="success" path="/professor.do" />
+        </action>
+        <action input="/sgaCadastroProfessor.jsp" name="Professor" path="/cadastrarprofessor" type="br.com.sga.site.action.CadastrarProfessorAction">
+           <forward name="success" path="/professor.do" />
+        </action>
+        
+        <!-- Turma --> 
+        <action  input="/sgaTurmas.jsp" name="Turma" path="/turma" type="br.com.sga.site.action.TurmaAction">
+            <forward name="success" path="/sgaTurmas.jsp" />
+        </action> 
+        <action  path="/editaturma" type="br.com.sga.site.action.EditaTurmaAction">
+            <forward name="success" path="/sgaEditaCadastroTurma.jsp" />
+        </action>
+        <action  input="/sgaEditaCadastroTurma.jsp" name="Turma" path="/editarturma" type="br.com.sga.site.action.EditarTurmaAction">
+            <forward name="success" path="/turma.do" />
+        </action>
+        <action input="/sgaCadastroTurma.jsp" name="Turma" path="/cadastrarturma" type="br.com.sga.site.action.CadastrarTurmaAction">
+           <forward name="success" path="/turma.do" />
+        </action>
+        <action input="/sgaTurmas.jsp" name="Turma" path="/cadastroturma" scope="request" type="br.com.sga.site.action.CadastroTurmaAction">
+           <forward name="success" path="/sgaCadastroTurma.jsp" />
+        </action>    
+
+        <!-- Usuario --> 
+        <action  input="/sgaUsuarios.jsp" name="Usuario" path="/usuario" type="br.com.sga.site.action.UsuarioAction">
+            <forward name="success" path="/sgaUsuarios.jsp" />
+        </action> 
+        <action  path="/editausuario" type="br.com.sga.site.action.EditaUsuarioAction">
+            <forward name="success" path="/sgaEditaCadastroUsuario.jsp" />
+        </action>
+        <action  input="/sgaEditaCadastroUsuario.jsp" name="Usuario" path="/editarusuario" type="br.com.sga.site.action.EditarUsuarioAction">
+            <forward name="success" path="/usuario.do" />
+        </action>
+        <action input="/sgaCadastroUsuario.jsp" name="Usuario" path="/cadastrarusuario" type="br.com.sga.site.action.CadastrarUsuarioAction">
+           <forward name="success" path="/usuario.do" />
+        </action>
+        
+        
+    </action-mappings>
+    
+    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+
+    <message-resources parameter="br/com/sga/site/ApplicationResource"/>    
+    
+    <!-- ========================= Tiles plugin ===============================-->
+    <!--
+    This plugin initialize Tiles definition factory. This later can takes some
+    parameters explained here after. The plugin first read parameters from
+    web.xml, thenoverload them with parameters defined here. All parameters
+    are optional.
+    The plugin should be declared in each struts-config file.
+    - definitions-config: (optional)
+    Specify configuration file names. There can be several comma
+    separated file names (default: ?? )
+    - moduleAware: (optional - struts1.1)
+    Specify if the Tiles definition factory is module aware. If true
+    (default), there will be one factory for each Struts module.
+    If false, there will be one common factory for all module. In this
+    later case, it is still needed to declare one plugin per module.
+    The factory will be initialized with parameters found in the first
+    initialized plugin (generally the one associated with the default
+    module).
+    true : One factory per module. (default)
+    false : one single shared factory for all modules
+    - definitions-parser-validate: (optional)
+    Specify if xml parser should validate the Tiles configuration file.
+    true : validate. DTD should be specified in file header (default)
+    false : no validation
+
+    Paths found in Tiles definitions are relative to the main context.
+    -->
+    <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />      
+        <set-property property="moduleAware" value="true" />
+    </plug-in>
+    
+    <!-- ========================= Validator plugin ================================= -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property
+            property="pathnames"
+            value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+    </plug-in>
+  
+</struts-config>
