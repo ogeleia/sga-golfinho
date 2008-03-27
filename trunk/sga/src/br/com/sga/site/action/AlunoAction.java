@@ -13,7 +13,8 @@ import java.util.List;
 public class AlunoAction extends ActionSupport  {
 
 	private static final long serialVersionUID = 1L;	
-	private final static String SUCCESS = "success";
+	//private final static String SUCCESS = "success";
+	private final static String SUCCESS = "input";
 	
 	public String listar() throws Exception {
 		AlunoBussinesDelegate bd = new AlunoBussinesDelegate();
