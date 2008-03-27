@@ -6,9 +6,6 @@
 package br.com.sga.site.negocio;
 
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
-//import org.apache.struts.action.ActionForm;
-import br.com.sga.site.bean.Aluno;
 import br.com.sga.site.model.DAOAluno;
 
 public class AlunoBussinesDelegate {
@@ -21,18 +18,10 @@ public class AlunoBussinesDelegate {
 		this.request = request;
 	}*/
 
-	public void busca() {
-		/* Recebe os dados do formulario e cria os criterios de busca
-		Aluno aluno = (Aluno) form;
-		String busca = new String();
-		if (request.getParameter("buscanome") != null) {
-			busca = request.getParameter("buscanome");
-		}
+	public List listAll() {		
 		DAOAluno dao = new DAOAluno();
-		List alunoList = dao.busca(busca);
-		
-		request.setAttribute("alunoList", alunoList);
-		request.setAttribute("busca", busca);*/
+		List lista = dao.listAll();
+		return lista;		
 	}
 
 }

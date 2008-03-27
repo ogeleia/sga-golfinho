@@ -36,6 +36,7 @@ function MM_swapImage() { //v3.0
 </script>
 </head>
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('images/sga_h_19.gif','images/sga_h_20.gif','images/sga_h_21.gif','images/sga_h_22.gif','images/sga_h_23.gif','images/sga_h_24.gif','images/sga_h_25.gif','images/sga_h_26.gif')">
+<form name="aluno" action="aluno.do" method="post">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>    
     <td width="85%" rowspan="4" valign="top">
@@ -57,7 +58,7 @@ function MM_swapImage() { //v3.0
                     <td>&nbsp;</td>
                     <td><div align="center"></div></td>
                     <td  valign="top" bgcolor="a0d7f3" class="CelulaCentro">
-                        <form name="aluno" action="aluno.do" method="post"> 
+                         
                         <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" bordercolor="#FFFFFF">         
                             <tr valign="bottom">
                                 <td colspan="3">
@@ -91,7 +92,7 @@ function MM_swapImage() { //v3.0
                                     <a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image30','','images/btn_buscar_H.gif',1)"></a>
                                 </td>
                             </tr>
-                        </form>
+                        
                         </table>
                     </td>
                     <td>&nbsp;</td>
@@ -109,7 +110,7 @@ function MM_swapImage() { //v3.0
     </td>
   </tr>
 </table>
-
+</form>
 </body>
 
 </html>

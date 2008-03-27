@@ -5,6 +5,7 @@
 
 package br.com.sga.site.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -22,8 +23,8 @@ import br.com.sga.site.bean.Aluno;
  */
 public class DAOAluno {
 	
-	public List busca(String busca) {
-		Session sessao = HibernateUtil.getSession(); // abrindo uma sessao
+	public List listAll() {
+		/*Session sessao = HibernateUtil.getSession(); // abrindo uma sessao
 		Transaction transaction = sessao.beginTransaction(); // Iniciando uma										// transacao
 		Criterion criton = Expression.like("nome", busca, MatchMode.START);
 		Criteria crit = sessao.createCriteria(Aluno.class);
@@ -32,6 +33,13 @@ public class DAOAluno {
 		List alunoList = crit.list();
 		transaction.commit();
 		sessao.close();
+		return alunoList;*/
+		Aluno aluno = new Aluno();
+		aluno.setCodigo(1);
+		aluno.setNome("Teste");
+		List alunoList = new ArrayList();
+		alunoList.add(aluno);
 		return alunoList;
+		
 	}
 }
