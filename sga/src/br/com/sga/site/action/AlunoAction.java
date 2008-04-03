@@ -30,11 +30,12 @@ public class AlunoAction extends ActionSupport implements ServletRequestAware,Se
 
 	private static final long serialVersionUID = 1L;	
 	//private final static String SUCCESS = "success";
-	private final static String SUCCESS = "input";
+	private final static String SUCCESS = "SUCCESS";
 	private HttpServletRequest request;
 	private HttpServletResponse response;
 	
 	public String listar() throws Exception {
+		/*
 		//AlunoBussinesDelegate bd = new AlunoBussinesDelegate();
 		//List alunoList = bd.listAll();
 		 
@@ -52,8 +53,8 @@ public class AlunoAction extends ActionSupport implements ServletRequestAware,Se
         request.setAttribute("alunoList", alunoList);
         
 		//request.setAttribute("alunoList", alunoList);
-		//request.setAtribute("busca", busca);		
-		return SUCCESS;
+		//request.setAtribute("busca", busca);	*/	
+		 return INPUT;
 	}
 	
 	public void setServletRequest(HttpServletRequest request){

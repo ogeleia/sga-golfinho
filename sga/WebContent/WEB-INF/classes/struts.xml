@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
  <struts> 
- 	<package name="default" extends="struts-default"> 
- 		<action name="teste" class="br.com.sga.site.action.TesteAction"> 
- 			<result name="input">/main.jsp</result> 
- 		</action> 
- 		<action name="alunos" class="br.com.sga.site.action.AlunoAction" method="listar"> 
- 			<result name="input">/sgaAlunos.jsp</result> 
- 		</action>
- 	</package> 
+        <package name="default" extends="struts-default"> 
+                <action name="teste" class="br.com.sga.site.action.TesteAction"> 
+                        <result name="input">/main.jsp</result> 
+                </action> 
+                <action name="alunos" class="br.com.sga.site.action.AlunoAction" method="listar"> 
+                        <result name="input">/sgaAlunos.jsp</result> 
+                </action>
+        </package> 
  </struts>
