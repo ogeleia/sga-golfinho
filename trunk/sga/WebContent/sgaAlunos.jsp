@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
+
 <html>
 <head>
 <title>sga</title>
@@ -83,11 +83,12 @@ function MM_swapImage() { //v3.0
                             </tr>
                             <tr>
                                 <td colspan="4" class="style1"><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image30','','images/btn_buscar_H.gif',1)"></a>
+                                    <!-- 
                                     <display:table name="alunoList" class="displaytag">                                      
                                       <display:column property="nome"    title="Alunos" href="editaaluno.do" paramId="cod"  paramProperty="codigo" />   
                                       
                                     </display:table>
-                                                                   
+                                     -->                          
                               
                                     <a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image30','','images/btn_buscar_H.gif',1)"></a>
                                 </td>
