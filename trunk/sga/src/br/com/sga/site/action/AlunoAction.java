@@ -18,6 +18,7 @@ import br.com.sga.site.model.HibernateUtil;
 import br.com.sga.site.negocio.AlunoBussinesDelegate;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -34,32 +35,67 @@ public class AlunoAction extends ActionSupport implements ServletRequestAware,Se
 	private HttpServletRequest request;
 	private HttpServletResponse response;
 	
-	public String listar() throws Exception {
-		/*
-		//AlunoBussinesDelegate bd = new AlunoBussinesDelegate();
-		//List alunoList = bd.listAll();
-		 
-		Session sessao = HibernateUtil.getSession(); // abrindo uma sessao
-	    Transaction transaction = sessao.beginTransaction(); // Iniciando uma transacao
-	    
-	  //busca o objeto
-        Aluno aluno = (Aluno) sessao.get(Aluno.class, new Integer(Integer.parseInt("1")));     
-        transaction.commit();
-        sessao.close();
-        
-        //Retorna os dados
-        List alunoList = new  ArrayList();
-        alunoList.add(aluno);   
-        request.setAttribute("alunoList", alunoList);
-        
-		//request.setAttribute("alunoList", alunoList);
-		//request.setAtribute("busca", busca);	*/	
-		 return INPUT;
+	public String listarAlunos() throws Exception {		
+		AlunoBussinesDelegate bd = new AlunoBussinesDelegate();
+		List alunoList = bd.listar();		 
+		request.setAttribute("alunoList", alunoList);		
+		return INPUT;
 	}
 	
+	public String buscarAlunos() throws Exception {
+		AlunoBussinesDelegate bd = new AlunoBussinesDelegate();
+		bd.setBusca(this.request.getParameter("busca"));
+		List alunoList = bd.buscar();		 
+		request.setAttribute("alunoList", alunoList);		
+		return INPUT;
+	}
+	
+	public String editarAluno() throws Exception {
+		AlunoBussinesDelegate bd = new AlunoBussinesDelegate();
+		bd.setCodigo(Integer.parseInt(this.request.getParameter("cod")));
+		List alunoList = bd.editar();		 
+		request.setAttribute("alunoList", alunoList);		
+		return INPUT;
+	}
+	
+	public String salvarAluno() throws Exception {
+		AlunoBussinesDelegate bd = new AlunoBussinesDelegate();
+		bd.setCodigo(Integer.parseInt(this.request.getParameter("cod")));		
+		bd.setNome(this.request.getParameter("nome"));
+        bd.setEndereco(this.request.getParameter("endereco"));
+        bd.setTelefone(this.request.getParameter("telefone"));
+        bd.setCpf(this.request.getParameter("cpf"));
+        bd.setRg(this.request.getParameter("rg"));
+        bd.setStatus(this.request.getParameter("status"));
+        //faça a coisa certa!!      
+        bd.setDatainclusao(new Date());
+		String retorno = bd.salvar();		 
+		//request.setAttribute("alunoList", alunoList);
+		request.setAttribute("resultado", retorno);
+		return INPUT;
+	}
+	
+	public String cadastrarAluno() throws Exception {
+		AlunoBussinesDelegate bd = new AlunoBussinesDelegate();
+		//bd.setCodigo(Integer.parseInt(this.request.getParameter("cod")));		
+		bd.setNome(this.request.getParameter("nome"));
+        bd.setEndereco(this.request.getParameter("endereco"));
+        bd.setTelefone(this.request.getParameter("telefone"));
+        bd.setCpf(this.request.getParameter("cpf"));
+        bd.setRg(this.request.getParameter("rg"));
+        bd.setStatus("0");
+        //faça a coisa certa!!      
+        bd.setDatainclusao(new Date());
+		String retorno = bd.cadastrar();		 
+		//request.setAttribute("alunoList", alunoList);
+		request.setAttribute("resultado", retorno);
+		return INPUT;
+	}
+	
+	
 	public void setServletRequest(HttpServletRequest request){
-	    this.request = request;
-	  }
+	  this.request = request;
+	}
 
 	  public HttpServletRequest getServletRequest(){
 	    return request;
