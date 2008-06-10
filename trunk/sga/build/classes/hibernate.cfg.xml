@@ -7,8 +7,8 @@
     <!-- Data Source Name -->
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/golfinho</property>
-    <property name="hibernate.connection.username">golfinhodb</property>
-    <property name="hibernate.connection.password">golfinhodb</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">root</property>
 
     <!-- SQL dialect -->
     <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
